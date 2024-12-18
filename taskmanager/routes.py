@@ -11,7 +11,9 @@ def home():
 # create an app route for categories.html
 @app.route("/categories")
 def categories():
-    return render_template("categories.html")
+    # updated route after category cards added to categories.html
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_category", methods=["GET", "POST"])
